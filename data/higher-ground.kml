@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <Style id="higher-ground-open">
+      <IconStyle>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/ms/icons/red-dot.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Placemark>
+      <n>Arbor Spring</n>
+      <styleUrl>#Best</styleUrl>
+      <description><![CDATA[430 Arbor Spring, Ballwin, MO 63021]]></description>
+      <Point>
+        <coordinates>-90.525659,38.569319</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Bee Cave</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[14058 Bee Cave Pkwy Building C, Austin, TX 78738 US]]></description>
+      <Point>
+        <coordinates>-97.964538,30.311521</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Blue Ash</n>
+      <styleUrl>#Best</styleUrl>
+      <description><![CDATA[11179 Luschek Dr, Cincinnati, OH 45241]]></description>
+      <Point>
+        <coordinates>-84.380688,39.270535</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Bradley Hills</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[7108 Bradley Blvd., Bethesda, MD 20817]]></description>
+      <Point>
+        <coordinates>-77.016719,38.911936</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Brasswood</n>
+      <styleUrl>#Best</styleUrl>
+      <description><![CDATA[2001 NW 142nd St, Oklahoma City, OK 73134]]></description>
+      <Point>
+        <coordinates>-97.548018,35.61565</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Broadlands</n>
+      <styleUrl>#Best</styleUrl>
+      <description><![CDATA[42945 Waxpool Rd, Ashburn, VA 20148 US]]></description>
+      <Point>
+        <coordinates>-77.518102,39.016795</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Brushy Creek</n>
+      <styleUrl>#Best</styleUrl>
+      <description><![CDATA[3017 Polar Lane Cedar Park, TX 78613 US]]></description>
+      <Point>
+        <coordinates>-97.77669505515021,30.53198033473318</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Burr Ridge</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[7508 S County Line Rd, Burr Ridge, IL 60527]]></description>
+      <Point>
+        <coordinates>-87.9165399299763,41.7523592561695</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Cary</n>
+      <styleUrl>#Best</styleUrl>
+      <description><![CDATA[316 Colonades Way, Cary, NC 27518]]></description>
+      <Point>
+        <coordinates>-78.777512,35.738528</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Central West End (Laclede)</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[4150 Laclede Ave, St. Louis, MO 63108 US]]></description>
+      <Point>
+        <coordinates>-90.248919,38.637199</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Chantilly</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[4550 Walney Rd, Chantilly, VA 20151 US]]></description>
+      <Point>
+        <coordinates>-77.435364,38.877912</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Creve Coeur</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[689 Craig Rd, Creve Coeur, MO 63141]]></description>
+      <Point>
+        <coordinates>-90.437884,38.668648</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Cypress Creek</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[2006 Sun Chase Blvd, Cedar Park, TX 78613 US]]></description>
+      <Point>
+        <coordinates>-97.83756,30.477556</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Deerbrook</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[1085 Lake Cook Road, Deerfield, IL 60015 US]]></description>
+      <Point>
+        <coordinates>-87.853804,42.151832</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Deerfield</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[3105 Webb Rd, Milton, GA 30004 US]]></description>
+      <Point>
+        <coordinates>-84.269605,34.097576</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Downers Grove</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[925 Ogden Avenue, Downers Grove, IL 60515]]></description>
+      <Point>
+        <coordinates>-88.008638,41.80857</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Downtown Naperville</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[24 N Washington St., Naperville, IL 60540 US]]></description>
+      <Point>
+        <coordinates>-88.146767,41.775747</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Duluth</n>
+      <styleUrl>#Best</styleUrl>
+      <description><![CDATA[3345 Peachtree Industrial Blvd, Duluth, GA 30096 US]]></description>
+      <Point>
+        <coordinates>-84.167871,34.012849</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Eldorado</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[7508 W Eldorado Pkwy, McKinney, TX 75070 US]]></description>
+      <Point>
+        <coordinates>-96.716743,33.174779</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Evanston</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[1012 Davis Street, Evanston, IL 60201 US]]></description>
+      <Point>
+        <coordinates>-87.685696,42.046879</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Flower Mound</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[2501 Simmons Rd, Flower Mound, TX 75022 US]]></description>
+      <Point>
+        <coordinates>-97.089097,33.019329</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Folsom</n>
+      <styleUrl>#Best</styleUrl>
+      <description><![CDATA[777 Levy Rd, Folsom, CA 95630 US]]></description>
+      <Point>
+        <coordinates>-121.15937579165175,38.66174363048961</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Foothill Ranch</n>
+      <styleUrl>#Best</styleUrl>
+      <description><![CDATA[26462 Towne Centre Dr, Foothill Ranch, CA 92610 US]]></description>
+      <Point>
+        <coordinates>-117.66866431657516,33.68059709939433</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Galleria</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[1331 S Voss Rd, Houston, TX 77057 US]]></description>
+      <Point>
+        <coordinates>-95.49972,29.75414</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Goodyear</n>
+      <styleUrl>#Best</styleUrl>
+      <description><![CDATA[1832 N Litchfield Rd, Goodyear, AZ 85395]]></description>
+      <Point>
+        <coordinates>-112.360003,33.467058</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Hillsboro</n>
+      <styleUrl>#Best</styleUrl>
+      <description><![CDATA[2802 SE 70th Ave, Hillsboro, OR 97123]]></description>
+      <Point>
+        <coordinates>-122.909205,45.499344</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Hurst</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[110 Grapevine Hwy, Hurst, TX 76054]]></description>
+      <Point>
+        <coordinates>-97.168007,32.871268</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Katy</n>
+      <styleUrl>#Best</styleUrl>
+      <description><![CDATA[21418 Kingsland Blvd, Katy, TX 77450 US]]></description>
+      <Point>
+        <coordinates>-95.742039,29.775791</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Laurel Oak</n>
+      <styleUrl>#Best</styleUrl>
+      <description><![CDATA[1004 Laurel Oak Rd, Voorhees Township, NJ 08043 US]]></description>
+      <Point>
+        <coordinates>-74.978154,39.844392</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Legacy</n>
+      <styleUrl>#Best</styleUrl>
+      <description><![CDATA[7220 Independence Pkwy, Plano, TX 75025]]></description>
+      <Point>
+        <coordinates>-96.74838,33.074797</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Magnificent Mile</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[226 E Illinois St, Chicago, IL 60611 US]]></description>
+      <Point>
+        <coordinates>-87.620867,41.891143</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Mansfield</n>
+      <styleUrl>#Best</styleUrl>
+      <description><![CDATA[2271 Matlock Rd, Mansfield, TX 76063]]></description>
+      <Point>
+        <coordinates>-97.109592,32.596233</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Marietta</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[2358 Shallowford Road, Marietta, GA 30066]]></description>
+      <Point>
+        <coordinates>-84.483423,34.041094</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>North Scottsdale</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[20624 N 76th St, Scottsdale, AZ 85255 US]]></description>
+      <Point>
+        <coordinates>-111.917246,33.673103</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Oak Brook</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[1745 W 22nd St., Oak Brook, IL 60523]]></description>
+      <Point>
+        <coordinates>-87.959602,41.846703</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Old Town</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[311 W Division, Old Town Park, Chicago, IL 60610 US]]></description>
+      <Point>
+        <coordinates>-87.636697,41.903667</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Palm Beach Gardens</n>
+      <styleUrl>#Best</styleUrl>
+      <description><![CDATA[353 Hiatt Drive, Palm Beach Gardens, FL 33418 US]]></description>
+      <Point>
+        <coordinates>-80.133487,26.810253</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Paradise Valley</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[4856 E. Greenway Road, Scottsdale, AZ 85254]]></description>
+      <Point>
+        <coordinates>-111.97552,33.626492</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Prosperity</n>
+      <styleUrl>#Best</styleUrl>
+      <description><![CDATA[4755 Prosperity Church Rd, Charlotte, NC 28269 US]]></description>
+      <Point>
+        <coordinates>-80.783366,35.360631</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Richardson</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[1140 W Campbell Rd, Richardson, TX 75080,]]></description>
+      <Point>
+        <coordinates>-96.760352,32.97885</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Round Rock</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[7210 Wyoming Springs Dr, Round Rock, TX 78681 US]]></description>
+      <Point>
+        <coordinates>-97.716042,30.513868</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>South Beaverton</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[12650 SW Brockman Rd, Beaverton, OR 97008 US]]></description>
+      <Point>
+        <coordinates>-122.806414,45.454637</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>South Naperville</n>
+      <styleUrl>#Best</styleUrl>
+      <description><![CDATA[5051 Ace Ln, Naperville, IL 60564 US]]></description>
+      <Point>
+        <coordinates>-88.206177,41.678326</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Spruce Tree</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[12600 Spruce Tree Way, Raleigh, NC 27614 US]]></description>
+      <Point>
+        <coordinates>-78.561219,35.939694</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>The Woodlands</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[2280 Buckthorne Pl, Spring, TX 77380]]></description>
+      <Point>
+        <coordinates>-95.470381,30.140519</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Timber Ridge</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[2550 Timber Ridge Dr, Frisco, TX 75034 US]]></description>
+      <Point>
+        <coordinates>-96.86835,33.129766</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Verona</n>
+      <styleUrl>#Best</styleUrl>
+      <description><![CDATA[240 Enterprise Drive, Verona, WI 53593]]></description>
+      <Point>
+        <coordinates>-89.527716,42.995541</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>West Alex</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[3475 N Beauregard St, Alexandria, VA 22311 US]]></description>
+      <Point>
+        <coordinates>-77.107996,38.841314</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Westlake</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[4613-B, Bee Cave Rd, West Lake Hills, TX 78746 US]]></description>
+      <Point>
+        <coordinates>-97.815637,30.287314</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Wicker Park</n>
+      <styleUrl>#Alternative</styleUrl>
+      <description><![CDATA[1530 N Damen Ave., Chicago, IL 60622 US]]></description>
+      <Point>
+        <coordinates>-87.677777,41.909222</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <n>Worthington</n>
+      <styleUrl>#Best</styleUrl>
+      <description><![CDATA[125 Dillmont Dr., Columbus, OH 43235]]></description>
+      <Point>
+        <coordinates>-83.011562,40.133892</coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>
