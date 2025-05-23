@@ -17,7 +17,7 @@ const LOAD_BATCH_SIZE = 10; // Number of tiles to load in parallel
 
 // Base URL for tile data - change this based on environment
 const BASE_URL = window.location.href.includes('github.io') 
-    ? '/dynamic-microschool-heatmaps'  // GitHub Pages URL
+    ? '/gge-locations'  // GitHub Pages URL
     : '.';  // Local development URL
 
 // Helper function to calculate distance from viewport center
