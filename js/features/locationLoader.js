@@ -3,24 +3,30 @@ import { config } from '../../config.js';
 
 let map; // Will be initialized from main script
 let popup; // Global popup for hover states
-let activeStatusFilters = new Set(['#Best', '#Alternative']); // Track active status filters
+let activeStatusFilters = new Set(['#Grade-A', '#Grade-B', '#Grade-C', '#Grade-D']); // Track active status filters
 
 // Status to zone type mapping
 const statusToZoneType = {
-    '#Best': 'best',
-    '#Alternative': 'alternative'
+    '#Grade-A': 'Grade A',
+    '#Grade-B': 'Grade B',
+    '#Grade-C': 'Grade C',
+    '#Grade-D': 'Grade D'
 };
 
 // Zone type to status mapping
 const zoneTypeToStatus = {
-    'best': '#Best',
-    'alternative': '#Alternative'
+    '#Grade-A': 'Grade A',
+    '#Grade-B': 'Grade B',
+    '#Grade-C': 'Grade C',
+    '#Grade-D': 'Grade D'
 };
 
 // Status colors for zones
 const statusColors = {
-    '#Best': '#92c381',     // Green
-    '#Alternative': '#d8ebd0', // Light Green
+    '#Grade-A': '#32a955',
+    '#Grade-B': '#fed869',
+    '#Grade-C': '#ff9801',
+    '#Grade-D': '#ea4235'
 };
 
 // Initialize location loader
@@ -184,8 +190,10 @@ function createStatusFilters() {
 
     // Define status types and their labels
     const statusTypes = [
-        { id: 'Best', label: 'Best' },
-        { id: 'Alternative', label: 'Alternative' },
+        { id: 'Grade-A', label: 'Grade A' },
+        { id: 'Grade-B', label: 'Grade B' },
+        { id: 'Grade-C', label: 'Grade C' },
+        { id: 'Grade-D', label: 'Grade D' },
     ];
 
     // Create filters for each status type

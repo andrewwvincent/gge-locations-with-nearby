@@ -42,8 +42,10 @@ export const config = {
     },
     // Define status colors
     statusColors: {
-        '#Best': '#009344',    // Yellow for potential partners
-        '#Alternative': '#b1e377',      // Green for active locations
+        '#Grade-A': '#32a955',
+        '#Grade-B': '#fed869',
+        '#Grade-C': '#ff9801',
+        '#Grade-D': '#ea4235'
     },
 
     // List of major cities/metro areas for quick navigation
@@ -76,26 +78,30 @@ export const config = {
     locationLayers: [
         {
             id: 'Higher Ground Best',
-            name: 'Higher Ground Best',
+            name: 'Alternative 1',
             file: 'data/higher-ground-best.kml',
             defaultShape: 'circle',  // This location uses hexagons
             defaultChecked: false,
             defaultLabels: false,
             styles: {
-                '#Alternative': '#d8ebd0',
-                '#Best': '#92c381'
+                '#Grade-A': '#32a955',
+                '#Grade-B': '#fed869',
+                '#Grade-C': '#ff9801',
+                '#Grade-D': '#ea4235'
             }
         },
         {
             id: 'Higher Ground Alternative',
-            name: 'Higher Ground Alternative',
+            name: 'Other Alternatives',
             file: 'data/higher-ground-alternative.kml',
             defaultShape: 'square',  // This location uses hexagons
             defaultChecked: false,
             defaultLabels: false,
             styles: {
-                '#Alternative': '#d8ebd0',
-                '#Best': '#92c381'
+                '#Grade-A': '#32a955',
+        '#Grade-B': '#fed869',
+        '#Grade-C': '#ff9801',
+        '#Grade-D': '#ea4235'
             }
         }
     ]
