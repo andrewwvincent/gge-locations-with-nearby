@@ -276,8 +276,61 @@ function toggleLocationLayer(layerId) {
     }
 }
 
+/**
+ * Remove existing KML layers and sources to avoid ID conflicts
+ */
+function removeExistingKmlLayers() {
+    // Get all layers and sources from the map style
+    const style = map.getStyle();
+    
+    // First, get all layer and source IDs to remove
+    const layersToRemove = [];
+    const sourcesToRemove = [];
+    
+    // Find all KML layers
+    style.layers.forEach(layer => {
+        if (layer.id.startsWith('layer-')) {
+            layersToRemove.push(layer.id);
+        }
+    });
+    
+    // Find all KML sources
+    Object.keys(style.sources).forEach(sourceId => {
+        if (sourceId.startsWith('source-')) {
+            sourcesToRemove.push(sourceId);
+        }
+    });
+    
+    // First remove all layers (must be done before removing sources)
+    layersToRemove.forEach(layerId => {
+        console.log(`Removing existing KML layer: ${layerId}`);
+        try {
+            if (map.getLayer(layerId)) {
+                map.removeLayer(layerId);
+            }
+        } catch (error) {
+            console.log(`Error removing layer ${layerId}:`, error);
+        }
+    });
+    
+    // Then remove all sources
+    sourcesToRemove.forEach(sourceId => {
+        console.log(`Removing existing KML source: ${sourceId}`);
+        try {
+            if (map.getSource(sourceId)) {
+                map.removeSource(sourceId);
+            }
+        } catch (error) {
+            console.log(`Error removing source ${sourceId}:`, error);
+        }
+    });
+}
+
 // Load KML layers
-function loadLocationLayers() {
+export function loadLocationLayers() {
+    // First, remove existing KML layers and sources to avoid ID conflicts
+    removeExistingKmlLayers();
+    
     config.locationLayers.forEach(layer => {
         // Load KML file
         fetch(layer.file)
@@ -472,7 +525,8 @@ function loadLocationLayers() {
                     }
                 });
 
-                // Add symbol layer for the points
+                // Add symbol layer for the points with high z-index to ensure they're on top
+                // Add the layer first
                 map.addLayer({
                     id: layerId,
                     type: 'symbol',
@@ -487,10 +541,22 @@ function loadLocationLayers() {
                             ['slice', ['get', 'styleUrl'], 1]
                         ],
                         'icon-size': config.iconConfig.mapIconScale,
-                        'icon-allow-overlap': true
+                        'icon-allow-overlap': true,
+                        'icon-z-order': 'source',
+                        'symbol-z-order': 'source'
                     },
                     filter: ['in', ['get', 'styleUrl'], ['literal', Array.from(activeStatusFilters)]]
                 });
+                
+                // Now move this layer to the top of all other layers
+                try {
+                    // Get all layers again after adding this one
+                    const allLayers = map.getStyle().layers;
+                    // Move this layer to the very top
+                    map.moveLayer(layerId);
+                } catch (error) {
+                    console.log(`Error moving layer ${layerId} to top:`, error);
+                }
 
                 // Add hover effect
                 map.on('mouseenter', layerId, (e) => {
