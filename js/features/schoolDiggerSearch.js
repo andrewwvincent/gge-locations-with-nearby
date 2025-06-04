@@ -3,8 +3,9 @@
  * Fetches school data from SchoolDigger API via a proxy server
  */
 
-// Import the loadLocationLayers function from locationLoader.js
-import { loadLocationLayers } from './locationLoader.js';
+// Import from locationLoader.js
+import * as locationLoader from './locationLoader.js';
+const { loadLocationLayers } = locationLoader;
 
 // Global variables
 let map = null;
