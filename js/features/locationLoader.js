@@ -328,8 +328,11 @@ function removeExistingKmlLayers() {
 
 // Load KML layers
 export function loadLocationLayers() {
-    // First, remove existing KML layers and sources to avoid ID conflicts
-    removeExistingKmlLayers();
+    // Instead of removing all layers and sources, we'll check if they exist first
+    // and only add them if they don't exist
+    const style = map.getStyle();
+    const existingSources = Object.keys(style.sources);
+    const existingLayers = style.layers.map(layer => layer.id);
     
     config.locationLayers.forEach(layer => {
         // Load KML file
@@ -371,16 +374,77 @@ export function loadLocationLayers() {
 
                 // Create GeoJSON source
                 const sourceId = `source-${layer.id}`;
-                map.addSource(sourceId, {
-                    type: 'geojson',
-                    data: {
-                        type: 'FeatureCollection',
-                        features: features
+                const layerId = `layer-${layer.id}`;
+                
+                // Check if layer exists and remove it first
+                if (existingLayers.includes(layerId)) {
+                    try {
+                        map.removeLayer(layerId);
+                        console.log(`Removed existing layer: ${layerId}`);
+                    } catch (error) {
+                        console.log(`Error removing layer ${layerId}:`, error);
                     }
-                });
+                }
+                
+                // Check if source exists
+                if (existingSources.includes(sourceId)) {
+                    // Update the existing source with new data
+                    try {
+                        const source = map.getSource(sourceId);
+                        if (source && typeof source.setData === 'function') {
+                            source.setData({
+                                type: 'FeatureCollection',
+                                features: features
+                            });
+                            console.log(`Updated existing source: ${sourceId}`);
+                        } else {
+                            // If we can't update, remove and recreate
+                            map.removeSource(sourceId);
+                            map.addSource(sourceId, {
+                                type: 'geojson',
+                                data: {
+                                    type: 'FeatureCollection',
+                                    features: features
+                                }
+                            });
+                            console.log(`Recreated source: ${sourceId}`);
+                        }
+                    } catch (error) {
+                        console.log(`Error updating source ${sourceId}:`, error);
+                        // If there's an error, try removing and recreating
+                        try {
+                            map.removeSource(sourceId);
+                            map.addSource(sourceId, {
+                                type: 'geojson',
+                                data: {
+                                    type: 'FeatureCollection',
+                                    features: features
+                                }
+                            });
+                        } catch (innerError) {
+                            console.log(`Failed to recreate source ${sourceId}:`, innerError);
+                            return; // Skip this layer if we can't fix it
+                        }
+                    }
+                } else {
+                    // Add new source if it doesn't exist
+                    try {
+                        map.addSource(sourceId, {
+                            type: 'geojson',
+                            data: {
+                                type: 'FeatureCollection',
+                                features: features
+                            }
+                        });
+                        console.log(`Added new source: ${sourceId}`);
+                    } catch (error) {
+                        console.log(`Error adding source ${sourceId}:`, error);
+                        return; // Skip this layer if we can't add the source
+                    }
+                }
 
                 // Add layer for points
-                const layerId = `layer-${layer.id}`;
+                // layerId is already defined above
 
                 // Create icons for each status color
                 Object.entries(config.statusColors).forEach(([status, color]) => {
@@ -541,19 +605,24 @@ export function loadLocationLayers() {
                             ['slice', ['get', 'styleUrl'], 1]
                         ],
                         'icon-size': config.iconConfig.mapIconScale,
-                        'icon-allow-overlap': true,
-                        'icon-z-order': 'source',
-                        'symbol-z-order': 'source'
+                        'icon-allow-overlap': true
                     },
                     filter: ['in', ['get', 'styleUrl'], ['literal', Array.from(activeStatusFilters)]]
                 });
                 
                 // Now move this layer to the top of all other layers
                 try {
-                    // Get all layers again after adding this one
+                    // Get all layers after adding this one
                     const allLayers = map.getStyle().layers;
-                    // Move this layer to the very top
-                    map.moveLayer(layerId);
+                    if (allLayers && allLayers.length > 0) {
+                        // Get the ID of the topmost layer
+                        const topLayerId = allLayers[allLayers.length - 1].id;
+                        // Only move if the layer exists and isn't already at the top
+                        if (map.getLayer(layerId) && topLayerId !== layerId) {
+                            console.log(`Moving layer ${layerId} to top`);
+                            map.moveLayer(layerId, topLayerId);
+                        }
+                    }
                 } catch (error) {
                     console.log(`Error moving layer ${layerId} to top:`, error);
                 }

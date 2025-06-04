@@ -432,9 +432,24 @@
                     </form>
                 </div>
                 
-                <!-- Private Schools Toggle Button -->
+                <!-- School Controls -->
                 <div class="schools-control">
-                    <button id="toggle-schools" class="schools-toggle-btn">Show Private Schools</button>
+                    <button id="toggle-schools" class="schools-toggle-btn">Show Nearby Schools</button>
+                    
+                    <div id="school-filters" class="school-filters" style="margin-top: 10px; display: none;">
+                        <div class="school-filter">
+                            <input type="checkbox" id="filter-public" checked disabled>
+                            <label for="filter-public">Public Schools</label>
+                        </div>
+                        <div class="school-filter">
+                            <input type="checkbox" id="filter-private" checked disabled>
+                            <label for="filter-private">Private Schools</label>
+                        </div>
+                        <div class="school-filter">
+                            <input type="checkbox" id="filter-charter" checked disabled>
+                            <label for="filter-charter">Charter Schools</label>
+                        </div>
+                    </div>
                 </div>
             </div>
             <button id="collapse-btn" class="collapse-btn" type="button">X</button>

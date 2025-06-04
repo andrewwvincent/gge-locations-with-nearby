@@ -878,6 +878,45 @@ body {
     border-color: #45a049;
 }
 
+/* Private Schools Toggle Button Styles */
+.schools-control {
+    margin-top: 20px;
+    padding: 15px 10px;
+    border-top: 1px solid #ccc;
+}
+
+.schools-toggle-btn {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.schools-toggle-btn:hover {
+    background-color: #2980b9;
+}
+
+.schools-toggle-btn:active {
+    background-color: #1f6aa9;
+}
+
+/* School marker styles */
+.school-marker {
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
 /* Mode Toggle Switch Styles */
 .mode-toggle {
     display: flex;

@@ -1,10 +1,13 @@
 // Map configuration
 export const config = {
+    // API Keys
+    greatSchoolsApiKey: 'XDuR6B48nm1fZhcSyu5B14MxgQ5sNoj95FATbJLZ', // Replace with your actual GreatSchools API key
     // Debug settings
     debug: {
         showTileFilenames: false, // When true, shows the GeoJSON filename when hovering over tiles
     },
     style: 'mapbox://styles/mapbox/streets-v12',
+    mapboxAccessToken: 'pk.eyJ1IjoiYW5kcmV3d3ZpbmNlbnQiLCJhIjoiY2xnNjlqcWd2MHdtcDNmcDRzdnlhcWxzMSJ9.gHRNE_xbQ0TqpXCj2zY4Fw',
     accessToken: 'pk.eyJ1IjoiYW5kcmV3LXZpbmNlbnQiLCJhIjoiY202OW4wNm5yMGlubzJtcTJmMnBxb2x1cSJ9.jrR3Ucv9Nvtc-T_7aKIQCg',
     CSV: '../data/locations.csv',
     title: 'Heatmaps - Number of Children from Households above Different Income Levels',
