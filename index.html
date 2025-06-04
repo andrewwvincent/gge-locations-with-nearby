@@ -8,6 +8,22 @@
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* Popup styles to ensure they appear on top */
+        .mapboxgl-popup {
+            z-index: 100 !important; /* Higher z-index to appear above markers */
+        }
+        
+        .school-popup-container .mapboxgl-popup-content {
+            padding: 0;
+            overflow: visible;
+            box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+        }
+        
+        /* School marker styles */
+        .school-marker {
+            z-index: 10;
+        }
+        
         /* Existing styles... */
         .income-header {
             cursor: pointer;
@@ -416,6 +432,10 @@
                     </form>
                 </div>
                 
+                <!-- Private Schools Toggle Button -->
+                <div class="schools-control">
+                    <button id="toggle-schools" class="schools-toggle-btn">Show Private Schools</button>
+                </div>
             </div>
             <button id="collapse-btn" class="collapse-btn" type="button">X</button>
         </div>
@@ -428,6 +448,7 @@
         import { config } from './config.js';
         import { initTileLoader } from './js/features/tileLoader.js';
         import { initLocationLoader } from './js/features/locationLoader.js';
+        import { initSchoolDiggerSearch } from './js/features/schoolDiggerSearch.js';
         import { MapCore } from './js/core/mapCore.js';
 
         // Wait for DOM and scripts to load
@@ -440,6 +461,7 @@
             map.on('load', () => {
                 initTileLoader(map);
                 initLocationLoader(map);
+                initSchoolDiggerSearch(map);
             });
         });
     </script>
