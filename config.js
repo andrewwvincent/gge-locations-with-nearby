@@ -83,7 +83,7 @@ export const config = {
             id: 'Higher Ground Best',
             name: 'Alternative 1',
             file: 'data/higher-ground-best.kml',
-            defaultShape: 'circle',  // This location uses hexagons
+            defaultShape: 'circle',
             defaultChecked: false,
             defaultLabels: false,
             styles: {
@@ -97,7 +97,7 @@ export const config = {
             id: 'Higher Ground Alternative',
             name: 'Other Alternatives',
             file: 'data/higher-ground-alternative.kml',
-            defaultShape: 'square',  // This location uses hexagons
+            defaultShape: 'square', 
             defaultChecked: false,
             defaultLabels: false,
             styles: {

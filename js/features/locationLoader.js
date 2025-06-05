@@ -3,7 +3,7 @@ import { config } from '../../config.js';
 
 let map; // Will be initialized from main script
 let popup; // Global popup for hover states
-let activeStatusFilters = new Set(['#Grade-A', '#Grade-B', '#Grade-C', '#Grade-D']); // Track active status filters
+let activeStatusFilters = new Set(['#Grade-A', '#Grade-B', '#Grade-C', '#Grade-D', '#private']); // Track active status filters
 
 // Status to zone type mapping
 const statusToZoneType = {
@@ -193,7 +193,7 @@ function createStatusFilters() {
         { id: 'Grade-A', label: 'Grade A' },
         { id: 'Grade-B', label: 'Grade B' },
         { id: 'Grade-C', label: 'Grade C' },
-        { id: 'Grade-D', label: 'Grade D' },
+        { id: 'Grade-D', label: 'Grade D' }
     ];
 
     // Create filters for each status type
@@ -326,7 +326,7 @@ function removeExistingKmlLayers() {
     });
 }
 
-// Load KML layers
+// Load location layers (KML or GeoJSON)
 export function loadLocationLayers() {
     // Instead of removing all layers and sources, we'll check if they exist first
     // and only add them if they don't exist
@@ -335,42 +335,80 @@ export function loadLocationLayers() {
     const existingLayers = style.layers.map(layer => layer.id);
     
     config.locationLayers.forEach(layer => {
-        // Load KML file
+        // Determine if file is KML or GeoJSON based on extension
+        const isGeoJSON = layer.file.toLowerCase().endsWith('.geojson') || layer.file.toLowerCase().endsWith('.json');
+        
+        // Load file (KML or GeoJSON)
         fetch(layer.file)
             .then(response => response.text())
-            .then(kmlText => {
-                const parser = new DOMParser();
-                const kml = parser.parseFromString(kmlText, 'text/xml');
+            .then(fileContent => {
+                let features = [];
                 
-                // Extract coordinates and properties from KML
-                const placemarks = kml.getElementsByTagName('Placemark');
-                const features = Array.from(placemarks).map(placemark => {
-                    const coordinates = placemark.getElementsByTagName('coordinates')[0].textContent
-                        .trim()
-                        .split(',')
-                        .map(Number);
-
-                    const nTag = placemark.getElementsByTagName('n')[0];
-                    const title = nTag ? nTag.textContent : '';
-                    const description = placemark.getElementsByTagName('description')[0]?.textContent || '';
-                    const styleUrl = placemark.getElementsByTagName('styleUrl')[0]?.textContent || '';
+                if (isGeoJSON) {
+                    // Parse GeoJSON content
+                    const geoJson = JSON.parse(fileContent);
                     
-                    // Remove CDATA wrapper if present
-                    const cleanDescription = description.replace(/^\[CDATA\[|\]\]$/g, '').trim();
-
-                    return {
-                        type: 'Feature',
-                        geometry: {
-                            type: 'Point',
-                            coordinates: [coordinates[0], coordinates[1]]
-                        },
-                        properties: {
-                            name: title,
-                            description: cleanDescription,
-                            styleUrl: styleUrl
+                    // Extract features from GeoJSON
+                    if (geoJson.type === 'FeatureCollection') {
+                        features = geoJson.features;
+                    } else if (geoJson.type === 'Feature') {
+                        features = [geoJson];
+                    }
+                    
+                    // Make sure each feature has the required properties
+                    features = features.map(feature => {
+                        // Ensure properties object exists
+                        if (!feature.properties) {
+                            feature.properties = {};
                         }
-                    };
-                });
+                        
+                        // Make sure name exists
+                        if (!feature.properties.name) {
+                            feature.properties.name = '';
+                        }
+                        
+                        // Make sure description exists
+                        if (!feature.properties.description) {
+                            feature.properties.description = '';
+                        }
+                        
+                        return feature;
+                    });
+                } else {
+                    // Process as KML
+                    const parser = new DOMParser();
+                    const kml = parser.parseFromString(fileContent, 'text/xml');
+                    
+                    // Extract coordinates and properties from KML
+                    const placemarks = kml.getElementsByTagName('Placemark');
+                    features = Array.from(placemarks).map(placemark => {
+                        const coordinates = placemark.getElementsByTagName('coordinates')[0].textContent
+                            .trim()
+                            .split(',')
+                            .map(Number);
+
+                        const nTag = placemark.getElementsByTagName('n')[0];
+                        const title = nTag ? nTag.textContent : '';
+                        const description = placemark.getElementsByTagName('description')[0]?.textContent || '';
+                        const styleUrl = placemark.getElementsByTagName('styleUrl')[0]?.textContent || '';
+                        
+                        // Remove CDATA wrapper if present
+                        const cleanDescription = description.replace(/^\[CDATA\[|\]\]$/g, '').trim();
+
+                        return {
+                            type: 'Feature',
+                            geometry: {
+                                type: 'Point',
+                                coordinates: [coordinates[0], coordinates[1]]
+                            },
+                            properties: {
+                                name: title,
+                                description: cleanDescription,
+                                styleUrl: styleUrl
+                            }
+                        };
+                    });
+                }
 
                 // Create GeoJSON source
                 const sourceId = `source-${layer.id}`;
