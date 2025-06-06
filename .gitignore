@@ -1,6 +1,8 @@
 # Large data files
 data/us-private-schools.csv
 data/us-private-schools.geojson
+data/nearby_schools.csv
+data/nearby_schools_with_grades.csv
 
 # Node modules
 node_modules/

@@ -132,7 +132,7 @@ export function initPrivateSchoolsSearch(mapInstance) {
  */
 async function loadPrivateSchoolsData() {
     try {
-        const response = await fetch('data/us-private-schools-simplified.geojson');
+        const response = await fetch('data/us-private-schools-updated.geojson');
         const data = await response.json();
         
         if (data && data.features) {
@@ -254,6 +254,11 @@ async function searchPrivateSchoolsNearVisiblePins() {
     // For each visible pin, find schools within the radius
     uniqueCoordinates.forEach(({ latitude, longitude }) => {
         allPrivateSchoolFeatures.forEach(school => {
+            // Skip schools with Grade = 'Remove'
+            if (school.properties.Grade === 'Remove') {
+                return;
+            }
+            
             const schoolCoords = school.geometry.coordinates;
             const distance = calculateDistance(
                 latitude, 
@@ -341,15 +346,58 @@ function addSchoolMarker(school) {
     const coordinates = school.geometry.coordinates;
     const properties = school.properties;
     
+    // Get the school grade
+    const schoolGrade = properties.Grade || '';
+    
     // Create marker element
     const el = document.createElement('div');
     el.className = 'school-marker private-school-marker';
-    el.style.width = '15px';
-    el.style.height = '15px';
+    
+    // Determine pin color based on grade
+    let pinColor = '#ffffff'; // Default white
+    let borderColor = '#000000'; // Default black border
+    let textColor = '#000000'; // Default black text
+    
+    // Check if grade exists and is not N/A or Unknown
+    if (schoolGrade && schoolGrade !== 'N/A' && schoolGrade !== 'Unknown') {
+        // A grades (A+, A, A-) get green
+        if (schoolGrade.startsWith('A')) {
+            pinColor = '#4CAF50'; // Green
+            borderColor = '#2E7D32'; // Darker green
+            textColor = '#ffffff'; // White text
+        }
+        // B grades get yellow
+        else if (schoolGrade.startsWith('B')) {
+            pinColor = '#FFEB3B'; // Yellow
+            borderColor = '#F57F17'; // Amber
+            textColor = '#000000'; // Black text
+        }
+        // C or D grades get red
+        else if (schoolGrade.startsWith('C') || schoolGrade.startsWith('D')) {
+            pinColor = '#F44336'; // Red
+            borderColor = '#B71C1C'; // Darker red
+            textColor = '#ffffff'; // White text
+        }
+    }
+    
+    // Set the marker style
+    el.style.width = '24px';
+    el.style.height = '24px';
     el.style.borderRadius = '50%';
-    el.style.backgroundColor = '#ffffff';
-    el.style.border = '2px solid #000000';
+    el.style.backgroundColor = pinColor;
+    el.style.border = `2px solid ${borderColor}`;
     el.style.cursor = 'pointer';
+    el.style.display = 'flex';
+    el.style.justifyContent = 'center';
+    el.style.alignItems = 'center';
+    el.style.fontWeight = 'bold';
+    el.style.fontSize = '10px';
+    el.style.color = textColor;
+    
+    // Add grade text to pin if available and not N/A or Unknown
+    if (schoolGrade && schoolGrade !== 'N/A' && schoolGrade !== 'Unknown') {
+        el.textContent = schoolGrade;
+    }
     
     // Create popup content
     const name = properties.name || 'Unnamed School';
@@ -359,6 +407,25 @@ function addSchoolMarker(school) {
     const zip = properties.zip || '';
     const enrollment = properties.enrollment || 'N/A';
     const gradeRange = formatGradeRange(properties.st_grade, properties.end_grade);
+    // schoolGrade is already declared above
+    const rating = properties['Great Schools Rating'] || '';
+    
+    // Format tuition with $ and commas if available
+    let tuition = 'N/A';
+    if (properties.Tuition) {
+        // Remove any existing $ or commas first
+        const cleanTuition = properties.Tuition.toString().replace(/[$,]/g, '');
+        // Check if it's a valid number
+        const tuitionNum = parseFloat(cleanTuition);
+        if (!isNaN(tuitionNum)) {
+            // Format with $ and commas
+            tuition = '$' + tuitionNum.toLocaleString();
+        } else {
+            // If it's not a valid number, use the original value
+            tuition = properties.Tuition;
+        }
+    }
+    
     const distance = properties.distance ? `${properties.distance} miles away` : '';
     
     // Get reference pin information
@@ -372,6 +439,9 @@ function addSchoolMarker(school) {
             <p>${address}<br>${city}, ${state} ${zip}</p>
             <p><strong>Enrollment:</strong> ${enrollment} students</p>
             <p><strong>Grades:</strong> ${gradeRange}</p>
+            <p><strong>School Grade:</strong> ${schoolGrade}</p>
+            ${rating ? `<p><strong>Star Rating:</strong> ${rating}</p>` : ''}
+            <p><strong>Tuition:</strong> ${tuition}</p>
             <p><strong>Distance:</strong> <a href="#" class="show-distance-line" data-school-lng="${coordinates[0]}" data-school-lat="${coordinates[1]}" data-pin-lng="${refPinLng}" data-pin-lat="${refPinLat}">${distance} miles from ${refPinName}</a></p>
         </div>
     `;
